@@ -1,6 +1,13 @@
 'use strict';
 
 var addMealButton = document.querySelector('.addMeal');
+var addFilterButton = document.querySelector('.filterMeal');
+var addAllButton = document.querySelector('.allMeal');
+
+var mealUrl = 'http://localhost:3000/meals';
+var refresh = function refresh() {
+  createRequest('GET', mealUrl, {}, callBack);
+}
 
 function getInputValue(query) {
   return document.querySelector(query).value;
@@ -18,13 +25,8 @@ function JSONify() {
   return JSON.stringify(getMealItem());
 }
 
-var refresh = function refresh() {
-  createRequest('GET', 'http://localhost:3000/meals', {}, callBack);
-}
-
-
 addMealButton.addEventListener('click', function() {
-  createRequest('POST', 'http://localhost:3000/meals', JSONify(), refresh);
+  createRequest('POST', mealUrl, JSONify(), refresh);
 });
 
-
+refresh();

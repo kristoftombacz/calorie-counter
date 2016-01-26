@@ -11,19 +11,25 @@ var connection = mysql.createConnection({
 connection.connect();
 
 function addMeal(attr, cb) {
-  connection.query('INSERT INTO calorie SET ?', attr, function(err, result) {
+  connection.query('INSERT INTO calorie SET ?;', attr, function(err, result) {
     cb(result);
   });
 }
 
-function allMeals(cb) {
+function listAllMeals(cb) {
   connection.query('SELECT * FROM calorie;', function(err, result) {
-  if (err) throw (err);
-  cb(result);
+    cb(result);
+  });
+}
+
+function deleteMeals(id, cb) {
+  connection.query('DELETE FROM calorie WHERE meal_id = ?;', id, function(err, result) {
+    cb(result);
   });
 }
 
 module.exports = {
   add: addMeal,
-  all: allMeals
+  all: listAllMeals,
+  del: deleteMeals
 };

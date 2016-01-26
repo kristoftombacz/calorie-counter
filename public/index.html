@@ -8,14 +8,16 @@
   <body>
     <h1>Calorie-counter</h1>
 
-    <label for="name">Name:</label>
-    <input type="text" class="nameInput" name="name" />
-    <label for="calories">Calories:</label>
-    <input type="number" class="calorieInput" name="calories" />
-    <label for="date">Date:</label>
-    <input type="date" class="dateInput" name="date" />
+    <input type="text" class="nameInput" name="name" placeholder="Name"/>
+    <input type="number" class="calorieInput" placeholder="Calories" />
+    <input type="date" class="dateInput" name="dateIn" />
 
     <button class="addMeal">Add meal</button>
+
+    <input type="date" class="dateOutput" name="dateOut" />
+    <button class="filterMeal">Filter</button>
+    <button class="allMeal">All</button>
+
     <div class="meals-container"></div>
 
     <script src=callback.js></script>
