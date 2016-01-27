@@ -23,8 +23,16 @@ app.get('/meals', function (req, res) {
   });
 });
 
+app.get('/meals/:date', function (req, res) {
+  items.filter(req.params.date, function(date) {
+    res.json(date);
+  })
+});
+
 app.delete('/meals/:id', function (req, res) {
   items.del(req.params.id, function(id) {
     res.json(id);
   });
 });
+
+

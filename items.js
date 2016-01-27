@@ -5,7 +5,8 @@ var connection = mysql.createConnection({
   host: 'localhost',
   user: 'test',
   password: 'gyuri',
-  database: 'calorie'
+  database: 'calorie',
+  timezone: 'utc'
 });
 
 connection.connect();
@@ -28,8 +29,15 @@ function deleteMeals(id, cb) {
   });
 }
 
+function filterByDay(date, cb) {
+  connection.query('SELECT * FROM calorie WHERE date = ?;', date, function(err, result) {
+    cb(result);
+  })
+}
+
 module.exports = {
   add: addMeal,
   all: listAllMeals,
-  del: deleteMeals
+  del: deleteMeals,
+  filter: filterByDay
 };

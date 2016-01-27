@@ -29,4 +29,13 @@ addMealButton.addEventListener('click', function() {
   createRequest('POST', mealUrl, JSONify(), refresh);
 });
 
+addFilterButton.addEventListener('click', function() {
+  var filteredUrl = mealUrl + "/" + getInputValue('.dateOutput');
+  createRequest('GET', filteredUrl, {}, callBack);
+});
+
+addAllButton.addEventListener('click', function() {
+  refresh();
+});
+
 refresh();
