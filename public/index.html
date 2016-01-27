@@ -2,24 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Calorie-counter</title>
+    <title>Calorie counter</title>
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/pure/pure.css">
+    <link href='https://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style/font-awesome/css/font-awesome.css">
   </head>
 
   <body>
-    <h1>Calorie-counter</h1>
+    <h3>Calorie counter</h3>
+    <div class="pure-form">
+      <input type="text" class="nameInput" name="name" placeholder=" Name"/>
+      <input type="number" class="calorieInput" placeholder=" Calories" />
+      <input type="date" class="dateInput" name="dateIn" />
 
-    <input type="text" class="nameInput" name="name" placeholder="Name"/>
-    <input type="number" class="calorieInput" placeholder="Calories" />
-    <input type="date" class="dateInput" name="dateIn" />
+      <button class="addMeal pure-button">Add <i class="fa fa-plus"></i></button>
 
-    <button class="addMeal">Add meal</button>
-
-    <input type="date" class="dateOutput" name="dateOut" />
-    <button class="filterMeal">Filter</button>
-    <button class="allMeal">All</button>
-
+      <input type="date" class="dateOutput" name="dateOut" />
+      <button class="filterMeal pure-button">Filter <i class="fa fa-tasks"></i></button>
+      <button class="allMeal pure-button">All <i class="fa fa-navicon"></i></button>
+    </div>
+    <div class="main-container">
     <div class="meals-container"></div>
-
+    <div class="progress-container"></div>
+    </div>
     <script src=callback.js></script>
     <script src=request.js></script>
     <script src=calorie-counter.js></script>

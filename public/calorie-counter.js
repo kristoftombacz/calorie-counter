@@ -3,8 +3,8 @@
 var addMealButton = document.querySelector('.addMeal');
 var addFilterButton = document.querySelector('.filterMeal');
 var addAllButton = document.querySelector('.allMeal');
-
 var mealUrl = 'http://localhost:3000/meals';
+
 var refresh = function refresh() {
   createRequest('GET', mealUrl, {}, callBack);
 }
@@ -32,6 +32,7 @@ addMealButton.addEventListener('click', function() {
 addFilterButton.addEventListener('click', function() {
   var filteredUrl = mealUrl + "/" + getInputValue('.dateOutput');
   createRequest('GET', filteredUrl, {}, callBack);
+
 });
 
 addAllButton.addEventListener('click', function() {

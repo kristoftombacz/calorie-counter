@@ -6,13 +6,29 @@ var callBack = function(response) {
 
   mealsContainer.innerHTML = '';
   mealsArray.forEach(function(mealsItem) {
-    var itemText = mealsItem.name + " "
-                 + mealsItem.calories + " "
-                 + mealsItem.date;
+    var mealText = mealsItem.name;
+    var calorieText = mealsItem.calories + " kcal";
 
-    var newMealsItem = document.createElement('p')
+    var newDivItem = document.createElement('div');
+    newDivItem.classList.add('newDivitem');
 
-    newMealsItem.innerHTML = itemText;
-    mealsContainer.appendChild(newMealsItem);
+    var newImgItem = document.createElement('div');
+    newImgItem.classList.add('newImgitem');
+
+    var newMealsItem = document.createElement('div');
+    newMealsItem.classList.add('newMealsitem');
+
+    var newCalorieItem = document.createElement('div');
+    newCalorieItem.classList.add('newCalorieitem');
+
+    newImgItem.innerHTML = "<img src=img/photo.png>";
+    newMealsItem.innerHTML = mealText;
+    newCalorieItem.innerHTML = calorieText;
+
+    newDivItem.appendChild(newImgItem);
+    newDivItem.appendChild(newMealsItem);
+    newDivItem.appendChild(newCalorieItem);
+
+    mealsContainer.appendChild(newDivItem);
   })
 }
