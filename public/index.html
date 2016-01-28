@@ -6,7 +6,6 @@
 
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/pure/pure.css">
-    <link href='https://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style/font-awesome/css/font-awesome.css">
   </head>
 
@@ -23,10 +22,16 @@
       <button class="filterMeal pure-button">Filter <i class="fa fa-tasks"></i></button>
       <button class="allMeal pure-button">All <i class="fa fa-navicon"></i></button>
     </div>
+
     <div class="main-container">
     <div class="meals-container"></div>
-    <div class="progress-container"></div>
+    <div class="progress-container">
+      <div class="progress"></div>
+      <div class="chart"></div>
     </div>
+    </div>
+
+    <script src=dist/progressbar.js></script>
     <script src=callback.js></script>
     <script src=request.js></script>
     <script src=calorie-counter.js></script>

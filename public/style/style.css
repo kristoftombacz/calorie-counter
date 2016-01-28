@@ -1,7 +1,11 @@
+@font-face {
+  font-family: RopaSans;
+  src: url(RopaSans.ttf);
+}
 * {
   padding: 0;
   margin: auto;
-  font-family: Ropa Sans, sans serif;
+  font-family: RopaSans, sans serif;
   max-width: 1010px;
 }
 h3{
@@ -14,6 +18,7 @@ h3{
 }
 img {
   height: 100px;
+  border-radius: 5px;
 }
 .main-container {
   display: flex;
@@ -24,8 +29,10 @@ img {
   height: auto;
   margin: 10px 10px;
   background-color: #DCC6E0;
+  border-radius: 5px;
 }
 .meals-container {
+  margin: 1px auto;
   width: 50%;
 }
 .newDivitem {
@@ -50,4 +57,27 @@ img {
 }
 .newMealsitem {
   font-size: 40px;
+}
+.closeItem {
+  background-color: #CF000F;
+  padding: 40px;
+  height: 20px;
+  margin: 0px;
+  border-radius: 5px;
+}
+.closeItem:hover {
+  background-color: #EF4836;
+}
+.progress {
+  font-size: 20px;
+  height: 20px;
+  color: #9B59B6;
+  text-align: center;
+  padding: 20px;
+}
+.chart {
+  padding: 25px;
+  width: 60%;
+  height: 60%;
+  font-size: 20px;
 }

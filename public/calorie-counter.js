@@ -15,9 +15,9 @@ function getInputValue(query) {
 
 function getMealItem() {
   return {
-          name: getInputValue('.nameInput'),
-          calories: getInputValue('.calorieInput'),
-          date: getInputValue('.dateInput')
+    name: getInputValue('.nameInput'),
+    calories: getInputValue('.calorieInput'),
+    date: getInputValue('.dateInput')
   };
 }
 
