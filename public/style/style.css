@@ -10,7 +10,8 @@
 }
 h3{
   background-color: #674172;
-  padding: 20px;
+  margin: 5px 0px 5px 0px;
+  padding: 30px;
   text-align: left;
   color: #FFFFFF;
   text-transform: uppercase;
@@ -26,7 +27,7 @@ img {
 }
 .progress-container {
   width: 50%;
-  height: auto;
+  max-height: 431px;
   margin: 10px 10px;
   background-color: #DCC6E0;
   border-radius: 5px;
@@ -46,7 +47,7 @@ img {
   transition: all 400ms ease-out 40ms;
 }
 .newDivitem:hover {
-  background-color: #DCC6E0;
+  opacity: 0.6;
 }
 .newImgitem {
   margin: 0px;
@@ -59,14 +60,15 @@ img {
   font-size: 40px;
 }
 .closeItem {
-  background-color: #CF000F;
+  background-color: #D24D57;
   padding: 40px;
   height: 20px;
   margin: 0px;
   border-radius: 5px;
+  transition: all 400ms ease-out 40ms;
 }
 .closeItem:hover {
-  background-color: #EF4836;
+  opacity: 0.6;
 }
 .progress {
   font-size: 20px;

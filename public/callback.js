@@ -1,8 +1,16 @@
 'use strict';
 
 function drawCircleProgress(whereToPut, number) {
+  var ui = number/1500;
+  var au = true;
+  var color2 = '#9B59B6';
+  if (ui > 1){
+    color2 = '#D24D57';
+    number = 1500;
+    au = false;
+  }
   var circle = new ProgressBar.Circle(whereToPut, {
-    color: '#9A12B3',
+    color: color2,
     strokeWidth: 5,
     trailWidth: 1,
     duration: 2000,
@@ -10,7 +18,11 @@ function drawCircleProgress(whereToPut, number) {
       value: '0'
     },
     step: function(state, bar) {
-      bar.setText((bar.value() *1500).toFixed(0) + "/1500 kcal");
+      if (au == true) {
+        bar.setText(number.toFixed(0) + "/1500 kcal");
+      } else {
+        bar.setText('Too high number');
+      }
     }
 
   });
@@ -71,7 +83,7 @@ var callBack = function(response) {
           var id = e.target.getAttribute('id');
           var areYouSure = confirm('Are you sure to delete this item?');
           if (areYouSure == true){
-            createRequest('DELETE', 'http://localhost:3000/meals/' + id, undefined, refresh());
+            createRequest('DELETE', 'http://localhost:3000/meals/' + id, undefined, refresh);
             refresh();
           } else {
             newCloseItem.classList.remove('closeItem');
