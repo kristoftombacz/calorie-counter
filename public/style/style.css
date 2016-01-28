@@ -78,8 +78,14 @@ img {
   padding: 20px;
 }
 .chart {
-  padding: 25px;
+  padding: 20px;
   width: 60%;
   height: 60%;
   font-size: 20px;
+}
+.rest {
+ min-height: 30px;
+ font-size: 15px;
+ color: green;
+ text-align: center;
 }

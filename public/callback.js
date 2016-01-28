@@ -96,4 +96,8 @@ var callBack = function(response) {
   })
   chartContainer.innerHTML = "The summary of calories: " + sumCalories + " kcal";
   drawCircleProgress(progressContainer, sumCalories);
+  var valami = document.querySelector('.rest');
+  if (1500-sumCalories > 0){
+  valami.innerHTML = 'You can eat ' + (1500-sumCalories) + " kcal more";
+  }
 }
