@@ -1,13 +1,13 @@
 'use strict';
 
-function drawCircleProgress(whereToPut, number) {
-  var dividedCalorie = number/1500;
+function drawCircleProgress(whereToPut, number, limit) {
+  var dividedCalorie = number/limit;
   var isLowerThanOne = true;
   var colorSwap = '#9B59B6';
 
   if (dividedCalorie > 1){
     colorSwap = '#D24D57';
-    number = 1500;
+    number = limit;
     isLowerThanOne = false;
   }
 
@@ -21,11 +21,11 @@ function drawCircleProgress(whereToPut, number) {
     },
     step: function(state, bar) {
       if (isLowerThanOne == true) {
-        bar.setText(number.toFixed(0) + "/1500 kcal");
+        bar.setText(number.toFixed(0) + "/" + limit + " kcal");
       } else {
         bar.setText('Too high number');
       }
     }
   });
-  circle.animate(number/1500);
+  circle.animate(number/limit);
 }

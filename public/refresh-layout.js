@@ -13,6 +13,7 @@ var refreshLayout = function(response) {
   var chartContainer = document.querySelector('.progress');
   var youCanEatMoreCointainer = document.querySelector('.rest');
   var sumCalories = 0;
+  var dailyLimit = 1500;
 
   if (chartContainer.lastChild != null){
     youCanEatMoreCointainer.innerHTML = '';
@@ -51,9 +52,10 @@ var refreshLayout = function(response) {
     sumCalories += Number(mealsItem.calories);
   })
 
+  drawCircleProgress(progressContainer, sumCalories, dailyLimit);
+
   chartContainer.innerHTML = "The summary of calories: " + sumCalories + " kcal";
-  drawCircleProgress(progressContainer, sumCalories);
-  if (1500-sumCalories > 0){
-    youCanEatMoreCointainer.innerHTML = 'You can eat ' + (1500-sumCalories) + " kcal more";
+  if (dailyLimit-sumCalories > 0){
+    youCanEatMoreCointainer.innerHTML = 'You can eat ' + (dailyLimit-sumCalories) + " kcal more";
   }
 }

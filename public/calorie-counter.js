@@ -31,7 +31,6 @@ addMealButton.addEventListener('click', function() {
 
 addFilterButton.addEventListener('click', function() {
   createRequest('GET', mealUrl + "/" + getInputValue('.dateOutput'), {}, refreshLayout);
-
 });
 
 addAllButton.addEventListener('click', function() {
