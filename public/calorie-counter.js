@@ -30,8 +30,7 @@ addMealButton.addEventListener('click', function() {
 });
 
 addFilterButton.addEventListener('click', function() {
-  var filteredUrl = mealUrl + "/" + getInputValue('.dateOutput');
-  createRequest('GET', filteredUrl, {}, callBack);
+  createRequest('GET', mealUrl + "/" + getInputValue('.dateOutput'), {}, callBack);
 
 });
 

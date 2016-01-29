@@ -1,16 +1,16 @@
 'use strict';
 
 function drawCircleProgress(whereToPut, number) {
-  var ui = number/1500;
-  var au = true;
-  var color2 = '#9B59B6';
-  if (ui > 1){
-    color2 = '#D24D57';
+  var dividedCalorie = number/1500;
+  var isLowerThanOne = true;
+  var colorSwap = '#9B59B6';
+  if (dividedCalorie > 1){
+    colorSwap = '#D24D57';
     number = 1500;
-    au = false;
+    isLowerThanOne = false;
   }
   var circle = new ProgressBar.Circle(whereToPut, {
-    color: color2,
+    color: colorSwap,
     strokeWidth: 5,
     trailWidth: 1,
     duration: 2000,
@@ -18,15 +18,19 @@ function drawCircleProgress(whereToPut, number) {
       value: '0'
     },
     step: function(state, bar) {
-      if (au == true) {
+      if (isLowerThanOne == true) {
         bar.setText(number.toFixed(0) + "/1500 kcal");
       } else {
         bar.setText('Too high number');
       }
     }
-
   });
   circle.animate(number/1500);
+}
+function createDiv(classname) {
+  var name = document.createElement('div');
+  name.classList.add(classname);
+  return name;
 }
 
 var callBack = function(response) {
@@ -34,9 +38,11 @@ var callBack = function(response) {
   var mealsContainer = document.querySelector('.meals-container');
   var progressContainer = document.querySelector('.chart');
   var chartContainer = document.querySelector('.progress');
+  var youCanEatMoreCointainer = document.querySelector('.rest');
   var sumCalories = 0;
 
   if (chartContainer.lastChild != null){
+    youCanEatMoreCointainer.innerHTML = '';
     progressContainer.innerHTML = '';
     chartContainer.innerHTML = '';
   }
@@ -45,21 +51,16 @@ var callBack = function(response) {
   mealsArray.forEach(function(mealsItem) {
     var mealText = mealsItem.name;
     var calorieText = mealsItem.calories + " kcal";
+    var newDivItem = createDiv('newDivitem');
+    var newImgItem = createDiv('newImgitem');
+    var newMealsItem = createDiv('newMealsitem');
+    var newCalorieItem = createDiv('newCalorieitem');
+    var newCloseItem2 = createDiv('closeItem');
+
+    newDivItem.setAttribute('id', mealsItem.meal_id);
     sumCalories += Number(mealsItem.calories);
 
-    var newDivItem = document.createElement('div');
-    newDivItem.classList.add('newDivitem');
-    newDivItem.setAttribute('id', mealsItem.meal_id);
-
-    var newImgItem = document.createElement('div');
-    newImgItem.classList.add('newImgitem');
-
-    var newMealsItem = document.createElement('div');
-    newMealsItem.classList.add('newMealsitem');
-
-    var newCalorieItem = document.createElement('div');
-    newCalorieItem.classList.add('newCalorieitem');
-
+    newCloseItem2.innerHTML = "<i class=\"fa fa-times\"></i>";
     newImgItem.innerHTML = "<img src=img/photo.png>";
     newMealsItem.innerHTML = mealText;
     newCalorieItem.innerHTML = calorieText;
@@ -67,37 +68,19 @@ var callBack = function(response) {
     newDivItem.appendChild(newImgItem);
     newDivItem.appendChild(newMealsItem);
     newDivItem.appendChild(newCalorieItem);
-
+    newDivItem.appendChild(newCloseItem2);
     mealsContainer.appendChild(newDivItem);
-    newDivItem.addEventListener('click', function(e) {
-      var newCloseItem = document.createElement('div');
-      newCloseItem.innerHTML = "<i class=\"fa fa-times\"></i>";
-      if (newDivItem.lastChild.classList.contains('closeItem')) {
-        newCloseItem.classList.remove('closeItem');
-        newDivItem.removeChild(newDivItem.lastChild);
-      } else {
-        newCloseItem.classList.add('closeItem');
-        newDivItem.appendChild(newCloseItem);
-        var del = document.querySelector('.closeItem');
-        del.addEventListener('click', function(){
-          var id = e.target.getAttribute('id');
-          var areYouSure = confirm('Are you sure to delete this item?');
-          if (areYouSure == true){
-            createRequest('DELETE', 'http://localhost:3000/meals/' + id, undefined, refresh);
-            refresh();
-          } else {
-            newCloseItem.classList.remove('closeItem');
-            newDivItem.removeChild(newDivItem.lastChild);
-            refresh();
-          }
-        })
-      }
+
+    newCloseItem2.addEventListener('click', function(e){
+      var getId = e.target.parentNode;
+      var id = getId.getAttribute('id');
+      createRequest('DELETE', 'http://localhost:3000/meals/' + id, undefined, refresh);
+      refresh();
     })
   })
   chartContainer.innerHTML = "The summary of calories: " + sumCalories + " kcal";
   drawCircleProgress(progressContainer, sumCalories);
-  var valami = document.querySelector('.rest');
   if (1500-sumCalories > 0){
-  valami.innerHTML = 'You can eat ' + (1500-sumCalories) + " kcal more";
+    youCanEatMoreCointainer.innerHTML = 'You can eat ' + (1500-sumCalories) + " kcal more";
   }
 }
