@@ -6,7 +6,7 @@ var addAllButton = document.querySelector('.allMeal');
 var mealUrl = 'http://localhost:3000/meals';
 
 var refresh = function refresh() {
-  createRequest('GET', mealUrl, {}, callBack);
+  createRequest('GET', mealUrl, {}, refreshLayout);
 }
 
 function getInputValue(query) {
@@ -30,7 +30,7 @@ addMealButton.addEventListener('click', function() {
 });
 
 addFilterButton.addEventListener('click', function() {
-  createRequest('GET', mealUrl + "/" + getInputValue('.dateOutput'), {}, callBack);
+  createRequest('GET', mealUrl + "/" + getInputValue('.dateOutput'), {}, refreshLayout);
 
 });
 
